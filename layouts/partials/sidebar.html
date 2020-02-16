@@ -1,0 +1,73 @@
+<div id="secondary" class="">
+    <section class="widget wow slow zoomIn">
+        {{ partial "search_form" . }}
+    </section>
+    <section class="widget wow slow zoomIn">
+        <div class="card">
+            <a href="https://github.com/timzzx">
+                <div class="card-image">
+                    <img class="lazy" src="{{ "img/fj.jpg" | relURL }}" data-original="{{ "img/fj.jpg" | relURL }}" />
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3>
+                            Thaoeu
+                        </h3>
+                    </div>
+                    <div class="card-date">
+                        <time>
+                        </time>
+                    </div>
+                    
+                    <div class="card-exceprt">
+                        <p>
+                            
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+    <section class="widget wow slow zoomIn">
+        <div id="calendar" class="calendar"></div>
+    </section>
+    <section class="widget wow slow zoomIn">
+        <h3 class="widget-title" ><i class="fa fa-folder-o"></i>&nbsp;分类</h3>
+        <ul class="widget-list">
+            {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+            <li class="fa fa-angle-right">
+                <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}">{{ $name }} ({{len $taxonomy.Pages}})</a>
+            </li><br />
+            {{ end }}
+        </ul>
+    </section>
+    <section class="widget wow slow zoomIn">
+        <h3 class="widget-title"><i class="fa fa-calendar-check-o"></i>&nbsp;归档</h3>
+        <ul class="widget-list">
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+            <li class="fa fa-angle-right">
+                <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }} ({{len $taxonomy.Pages}})</a>
+            </li><br />
+            {{ end }}
+        </ul>
+    </section>
+    {{ with .Site.Params.links }}
+    <section class="widget wow slow zoomIn">
+        <h3 class="widget-title"><i class="fa fa-external-link"></i>&nbsp;友情链接</h3>
+        <ul class="widget-list">
+            {{ range . }}
+            <li class="fa fa-angle-right">
+                <a rel="noreferrer noopener nofollow" href="{{ .url }}" title="{{ .title }}">{{ .name }}</a>
+            </li><br />
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}
+
+    <section class="widget wow slow zoomIn">
+        <h3 class="widget-title"><i class="fa fa-file-o"></i>&nbsp;其它</h3>
+        <ul class="widget-list">
+            <li class="fa fa-angle-right"><a href="{{ "index.xml" | relURL }}">&nbsp;本站RSS</a></li>
+        </ul><br />
+    </section>
+</div>

@@ -1,0 +1,21 @@
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <img class="wow  zoomIn slow" src="{{ "img/favicon.ico" | relURL }}" />
+            <a href="{{ .Site.BaseURL | absURL }}"><img class="wow  zoomIn slow" src="{{ "img/title.png" | relURL }}" /></a>
+            <div class="site-name ">
+                {{ with .Site.Params.description }}<p class="description wow slow zoomIn">{{ . }}</p>{{ end }}
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix wow slow zoomIn">
+                    <a class="{{ if or (.IsHome) (eq .Type "post") }}current{{ end }}" href="{{ .Site.BaseURL | absURL }}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;文章</a>
+                    {{ range $index,$data := (where .Site.Pages "Type" "standalone") }}
+                    <a {{ if eq .Permalink $.Permalink }}class="current"{{ end }} href="{{ .Permalink }}" title="{{ .Title }}">
+                        <i class="fa fa-bars" aria-hidden="true"></i>&nbsp;{{ .Title }}
+                    </a>
+                    {{ end }}
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
